@@ -1,26 +1,25 @@
+// src/App.tsx
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import RestaurantList from './components/Restaurent/RestaurantList';
+import { Route, Routes } from 'react-router-dom';
+import RestaurantDetails from './components/Restaurent/RestaurantDetail';
+import AddRestaurant from './components/Restaurent/AddRestaurent';
+import AddMenu from './components/Menu/AddMenu';
+import UpdateMenu from './components/Menu/UpdateMenu';
 
-function App() {
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Routes>
+        <Route path='/' element={<RestaurantList />}/>
+        <Route path="/restaurants/:id" element={<RestaurantDetails />}/>
+        <Route path='/addrestaurent' element={<AddRestaurant />}/>
+        <Route path='/addrestaurent/:id' element={<AddRestaurant />}/>
+        <Route path='/addmenu/:id' element={<AddMenu />}/>
+        <Route path='/updatemenu/:id' element={<UpdateMenu />}/>
+      </Routes>
     </div>
   );
-}
+};
 
 export default App;
